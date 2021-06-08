@@ -1,0 +1,76 @@
+pragma solidity ^0.5.1;
+
+contract Athlete_contract{
+    
+    uint256 public athleteCount = 0;
+    mapping(uint => Athlete) public athlete;
+    mapping(uint => Club) public club;
+    mapping(uint => StartDate) public start;
+    mapping(uint => EndDate) public end;
+    int public goals;
+    int public bonus;
+    int public multiplier;
+    
+    constructor() public{
+        goals = 0;
+        bonus = 0;
+    }
+    
+    struct Athlete{
+        uint id;
+        string name;
+    }
+    
+    struct Club{
+        string club_name;
+    }
+    
+    struct StartDate{
+        string start_month;
+        string start_day;
+        string start_year;
+    }
+    
+    struct EndDate{
+        string end_month;
+        string end_day;
+        string end_year;
+    }
+    
+    function addAthlete(string memory name) public{
+         athleteCount++;
+         athlete[athleteCount] = Athlete(athleteCount, name);
+    }
+    
+    function addClub(string memory club_name) public{
+        club[0] = Club(club_name);
+    }
+    
+    function setGoals(int  _goals) public{
+        goals = _goals;
+        
+    }
+    
+    function addStart(string memory start_month, string memory start_day, string memory start_year) public{
+        start[0] = StartDate(start_month, start_day, start_year);
+    }
+    
+    function addEnd(string memory end_month, string memory end_day, string memory end_year) public{
+        end[0] = EndDate(end_month, end_day, end_year);
+    }
+  
+   
+    
+    function getBonus() public payable returns(int){
+        //bonus = 0;
+        if(goals == 10){
+        bonus = 500;
+        }else if(goals >= 10){
+            multiplier = goals / 10;
+            
+            bonus = multiplier*500;
+            
+        }
+        return bonus;
+    }
+}
