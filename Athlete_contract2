@@ -1,0 +1,60 @@
+pragma solidity 0.6.6;
+
+contract Athlete_contract2{
+    
+    string public Name = "JP Pietersen";
+    string public Club = "Sharks";
+   
+    struct Player_details{
+        string Player_birthday;
+        string Player_nationality;
+        string Player_address;
+    } 
+    Player_details public PlayerDetails;
+    
+    
+    
+    struct Franchise_details{
+        string Franchise_name;
+        string Franchise_address;
+        string Club_representative;
+    }
+    Franchise_details public FranchiseDetails;
+    
+    struct term{
+        string Start;
+        string End;
+    }
+    term public Term;
+    
+    struct retainer_contracts{
+        uint256 Salary;
+        uint256 Bonus;
+        string Vehicle;
+        string Housing;
+    }
+    retainer_contracts public RetainerContracts;
+    
+    constructor() public{
+        PlayerDetails.Player_birthday = "July 12, 1986";
+        PlayerDetails.Player_nationality = "South African";
+        PlayerDetails.Player_address = "123 street st";
+        
+        FranchiseDetails.Franchise_name = "Sharks";
+        FranchiseDetails.Franchise_address = "123 Sharks st";
+        FranchiseDetails.Club_representative = "Joe Represent";
+        
+        Term.Start = "June 14th, 2021";
+        Term.End = "December 31st, 2021";
+        
+        RetainerContracts.Salary = 50000;
+        RetainerContracts.Bonus = 1;
+        RetainerContracts.Vehicle = "An electric scooter";
+        RetainerContracts.Housing = "A cardboard box";
+    }
+    
+  
+    
+    
+    
+}
