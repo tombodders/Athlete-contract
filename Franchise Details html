@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Franchise Details</title>
+
+</head>
+<body>
+<form>
+    <h4>Franchise Details</h4>
+    <div>
+        <label>Franchise Name</label>
+        <input type="text" name="franchiseName" placeholder="Enter franchise name">
+    </div>
+    <br>
+
+    <div>
+        <label>Address</label>
+        <input type="text" name="address" placeholder="Enter current address">
+    </div>
+    <br>
+
+    <div>
+        <label>Club Representative</label>
+        <input type="text" name="representativeName" placeholder="Enter representative name">
+    </div>
+    <br>
+    <hr>
+
+    <h4>Term</h4>
+    <div>
+        <label>Start Date:</label>
+        <input type="date" name="startDate">
+    </div>
+    <div>
+        <label>End Date:</label>
+        <input type="date" name="endDate">
+    </div>
+    <br>
+    <hr>
+
+    <h4>Retainer Contracts</h4>
+    <div>
+        <label>Salary:</label>
+        <input type="number" name="salary" placeholder="Enter player salary">
+    </div>
+    <br>
+    <div>
+        <label>Bonus:</label>
+        <input type="number" name="bonus" placeholder="Enter player bonus">
+    </div>
+    <br>
+    <div>
+        <label>Message</label>
+        <textarea name="message" placeholder="Conditions for bonus"></textarea>
+    </div>
+    <br>
+    <div>
+        <label>Vehicle</label>
+        <input type="text" name="vehicle" placeholder="Enter provided vehicle">
+    </div>
+    <br>
+    <div>
+        <label>Housing</label>
+        <input type="text" name="housing" placeholder="Enter provided housing">
+    </div>
+    <br>
+    <br>
+
+    <input type="submit" name="submit" value="Submit">
+</form>
+</body>
+</html>
