@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Putting User Input into JS Objects</title>
+    <style>
+        .formBox{
+            padding: 0.5rem 2rem;
+        }
+    </style>
+</head>
+<body>
+    <h4>Franchise Details</h4>
+    <form>
+        <div class="formBox">
+            <label for="title">Franchise Name</label>
+            <input type="text" id="franchiseName" placeholder="Enter Franchise Name"/>
+        </div>
+         <div class="formBox">
+        <label for="title">Address</label>
+        <input type="text" id="address" placeholder="Enter Current Address"/>
+        </div>
+        <div class="formBox">
+            <label for="yr">Club Representative</label>
+            <input type="text" id="representativeName" placeholder="Enter Representative Name"/>
+        </div>
+
+        <h4>Term</h4> 
+        <div class="formBox">
+            <label for="title">Athlete</label>
+            <input type="text" id="athlete" placeholder="Enter Athlete"/>
+            </div>
+        <div class="formBox">
+            <label for="yr">Start Date</label>
+            <input type="date" id="startDate" />
+        </div>
+        <div class="formBox">
+            <label for="yr">End Date</label>
+            <input type="date" id="endDate" />
+        </div>
+     
+        <div class="formBox">
+            <button id="btn">Click to Add</button>
+        </div>
+        <div id="msg">
+            <pre></pre>
+        </div>
+    </form>
+    <script>
+        let clubDetails = [];
+        // example {id:1592304983049, title: 'Deadpool', year: 2015}
+        const addClub = (ev)=>{
+            ev.preventDefault();  //to stop the form submitting
+            let club = {
+                //id: Date.now(),
+                Franchise: document.getElementById('franchiseName').value,
+                Address: document.getElementById('address').value,
+                Representative: document.getElementById('representativeName').value,
+                
+                Athlete: document.getElementById('athlete').value, 
+                StartDate: document.getElementById('startDate').value,
+                EndDate: document.getElementById('endDate').value
+                
+            }
+            clubDetails.push(club);
+            document.forms[0].reset(); // to clear the form for the next entries
+            //document.querySelector('form').reset();
+
+            //for display purposes only
+            console.warn('added' , {clubDetails} );
+            let pre = document.querySelector('#msg pre');
+            pre.textContent = '\n' + JSON.stringify(clubDetails, '\t', 2);
+
+            //saving to localStorage
+            localStorage.setItem('Club Details', JSON.stringify(clubDetails) );
+        }
+        document.addEventListener('DOMContentLoaded', ()=>{
+            document.getElementById('btn').addEventListener('click', addClub);
+        });
+    </script>
+</body>
+</html>
