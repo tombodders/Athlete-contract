@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+   
+    <title>Contract Agreement</title><!--Defines what shows up on the browser tab-->
+    
+</head>
+
+<body>
+    <div>
+        <h2>Contract Agreement</h2>
+
+        <p>A standard contract between</p><!--Following the template of previous version of a sharks contract-->
+        <strong><p id='name'></p></strong>
+        and
+        <strong><p id='clubName'></p></strong>
+        <br>
+
+        <h3>Athlete Details</h3><!--paragraph id is used to identify where information is sent-->
+        <!--The strong tag bolds all information sent from smart contract-->
+        <label>Player Birth date</label><strong><p id='birthday'></p></strong>
+        <label>Nationality</label><strong><p id='nationality'></p></strong>
+        <label>Player Address</label><strong><p id='address'></p></strong>
+        <br>
+
+        <h3>Franchise Details</h3>
+        <label>Legal Name of Franchise</label><strong><p id='clubName2'></p></strong>
+        <label>Address</label><strong><p id='clubAddress'></p></strong>
+        <label>Club Representative</label><strong><p id='clubRepresentative'></p></strong>
+        <br>
+
+        <h3>Term</h3>
+        <label>Start</label><strong><p id='startDate'></p></strong>
+        <label>End</label><strong><p id='endDate'></p></strong>
+        <br>
+
+        <!--Checkbox variable to confirm athlete agrees to details-->
+        <input type="checkbox" id="confirmation" name="ContractAgree" value="True">
+        <label for="confirmation">I <strong id='name2'></strong> agree to this contract</label>
+
+        
+<!--imports a mock signature field created on jotform, all signature submissions are then sent to your jotform account-->
+ <script type="text/javascript" src="https://form.jotform.com/jsform/212212188742047"></script>
+
+
+        
+    </div>
+    <!--Refer to AthleteDetailsGUI.html for definition of next few lines of code-->
+    <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.36/dist/web3.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
+    
+
+
+    <script>
+        var contract;
+
+        $(document).ready(function () {
+            web3 = new Web3(window.web3.currentProvider);
+
+            var address = "0x1Af0B90AE4bD71Aa38AF1Ece007769c6Cf920039";
+            var abi = [
+	{
+		"inputs": [],
+		"name": "FranchiseDetails",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "Franchise_name",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "Franchise_address",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "Club_representative",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "PlayerDetails",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "Player_name",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "Player_birthday",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "Player_nationality",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "Player_address",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "Term",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "Start",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "End",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getAddress",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getBirthday",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getClubAddress",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getClubName",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getClubRepresentative",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getName",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getNationality",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getTermEnd",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getTermStart",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_name",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_birthday",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_address",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_nationality",
+				"type": "string"
+			}
+		],
+		"name": "setAthleteData",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_clubName",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_clubAddress",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_clubRepresentative",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_termStart",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_termEnd",
+				"type": "string"
+			}
+		],
+		"name": "setClubData",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	}
+];
+
+
+
+			//create a variable to make calling the contract easier
+            contract = new web3.eth.Contract(abi, address);
+
+            //all the following define what functions to access in the smart contract
+            //the part after the $ corresponds to a paragraph id to identify where the data is sent
+            contract.methods.getName().call().then(function(name)
+            {
+                $('#name').html(name);
+               
+            })
+
+            contract.methods.getClubName().call().then(function(clubName2)
+            {
+                $('#clubName2').html(clubName2);
+                
+            })
+
+            contract.methods.getBirthday().call().then(function(birthday)
+            {
+                $('#birthday').html(birthday);
+                
+            })
+
+            contract.methods.getNationality().call().then(function(nationality)
+            {
+                $('#nationality').html(nationality);
+                
+            })
+
+            contract.methods.getAddress().call().then(function(address)
+            {
+                $('#address').html(address);
+                
+            })
+
+            contract.methods.getClubName().call().then(function(clubName)
+            {
+                $('#clubName').html(clubName);
+                
+            })
+
+            contract.methods.getClubAddress().call().then(function(clubAddress)
+            {
+                $('#clubAddress').html(clubAddress);
+                
+            })
+
+            contract.methods.getClubRepresentative().call().then(function(clubRepresentative)
+            {
+                $('#clubRepresentative').html(clubRepresentative);
+                
+            })
+
+            contract.methods.getTermStart().call().then(function(termStart)
+            {
+                $('#startDate').html(termStart);
+                
+            })
+
+            contract.methods.getTermEnd().call().then(function(termEnd)
+            {
+                $('#endDate').html(termEnd);
+                
+            })
+
+            contract.methods.getName().call().then(function(name2)
+            {
+                $('#name2').html(name2);
+               
+            })
+
+
+        })
+
+        
+    </script>
+
+</body>
+
+</html>

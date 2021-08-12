@@ -1,0 +1,344 @@
+<html>
+	<body>
+		<title>Athlete Details</title> <!--Defines what shows up on the browser tab-->
+	</body>
+
+<body>
+    <div>
+		<h4>Athlete Details</h4> <!--A field of data boxes to get necessary athlete info-->
+		<label>Full Name</label>
+        <input type="text" id="name" placeholder="Name">
+		<br><br>
+		<label>Birthday</label>
+        <input type="date" id="birthday">
+		<br><br>
+		<label>Address</label>
+        <input type="text" id="address" placeholder="Address">
+		<br><br>
+		<label>Nationality</label>
+        <input type="text" id="nationality" placeholder="Nationality">
+		<br><br>
+        
+        <button id='submit'>Submit</button>
+        
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.36/dist/web3.min.js">
+	//Imports web3 which is necessary to talk to your deployed smart contract</script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous">
+	//jquery is a javascript library</script>
+
+    <script>
+        var contract;
+		//prepares webpage to interact with smart contract
+        $(document).ready(function () {
+			//This tells webpage to connect to your eth wallet for gas fees, in this case Metamaks
+			//if error no from address shows up type .enable() after current provider and refresh
+			//This forces Metamask to wake up but you will have to remove .enable() after connection
+            web3 = new Web3(window.web3.currentProvider);
+
+			//The address of your deployed contract
+            var address = "0x1Af0B90AE4bD71Aa38AF1Ece007769c6Cf920039";
+            //copy abi from your deployed contract and paste here
+			//the abi tells your html code how to interact with your smart contract
+			var abi = [
+	{
+		"inputs": [],
+		"name": "FranchiseDetails",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "Franchise_name",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "Franchise_address",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "Club_representative",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "PlayerDetails",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "Player_name",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "Player_birthday",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "Player_nationality",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "Player_address",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "Term",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "Start",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "End",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getAddress",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getBirthday",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getClubAddress",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getClubName",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getClubRepresentative",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getName",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getNationality",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getTermEnd",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getTermStart",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_name",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_birthday",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_address",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_nationality",
+				"type": "string"
+			}
+		],
+		"name": "setAthleteData",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_clubName",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_clubAddress",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_clubRepresentative",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_termStart",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_termEnd",
+				"type": "string"
+			}
+		],
+		"name": "setClubData",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	}
+];
+
+			//create a variable to make calling the contract easier
+            contract = new web3.eth.Contract(abi, address);
+
+            
+        })
+
+        $('#submit').click(function() //define what happens when submit is clicked
+        {
+          
+			//take the submitted values and assign them to temporary values
+			var name = 0;
+			name = ($('#name').val()); 
+			
+			var birthday = 0;
+			birthday = ($('#birthday').val());
+
+			var address = 0;
+			address = ($('#address').val());
+
+			var nationality = 0;
+			nationality = ($('#nationality').val());
+
+
+			web3.eth.getAccounts().then(function(accounts){
+
+				var acc = accounts[0]; //assign the account where the gas fee will be taken from
+				//in this case, its your Metamask account
+
+				//calling .methods and then the function in your smart contract will initalize the call
+				//then pass all the temp values into your function, you have to pass as many as the smart contract is expecting
+				return contract.methods.setAthleteData(name, birthday, address, nationality).send({from: acc});
+			}).then(function(tx)
+			{
+				//logs the transaction details in the console
+				console.log(tx);
+			}).catch(function(tx)
+			{
+				console.log(tx);
+			})
+			
+			
+
+        });
+
+        
+    </script>
+
+</body>
+
+</html>
