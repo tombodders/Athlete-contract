@@ -15,6 +15,7 @@ Javascript VM: Provides various accounts within remix that you can get test eth 
 
 Injected Web3: Will connect to metamask if you have it installed in your browser, make sure your metamask wallet is connected to a test network so as not to use real money.
 ![image](https://user-images.githubusercontent.com/31867189/129261770-cebe9b4c-563e-4a91-834a-92e6b5426c20.png)
+
 Try this link to get testnet eth https://github.com/kovan-testnet/faucet
 You will then get a notifcation for a gas fee everytime you change something or deploy. This is method I would recommend
 
@@ -35,6 +36,7 @@ Athlete_contract3.sol:
 Third deployment of an athlete smart contract. This one uses a chainlink oracle to fetch data from a simulated API, the API simply has what would be the necessary athlete data. 
 Since this method requires a chainlink oracle, there is a fee associated with the oracle of 0.1 chainlink token. These can also be acquired on a testnet
 ![image](https://user-images.githubusercontent.com/31867189/129264432-95011017-5160-4bad-a48d-4556faec5a3e.png)
+
 Link to get Kovan testnet chainlink token https://kovan.chain.link/
 
 
