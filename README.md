@@ -40,5 +40,14 @@ Since this method requires a chainlink oracle, there is a fee associated with th
 ![image](https://user-images.githubusercontent.com/31867189/129264432-95011017-5160-4bad-a48d-4556faec5a3e.png)
 
 Link to get Kovan testnet chainlink token https://kovan.chain.link/
+Once you have deployed the contract, copy the contract address and send .1 link token to it.
+![image](https://user-images.githubusercontent.com/31867189/129300519-dc6c2e2f-45fa-4512-991f-a8028f503e18.png)
+
+Now that you have link token you can call the function requestAthleteData, this will call the oracle and consume the .1 chainlink token fee. 
+Since this method proved ineffictive, it has only been set up to fetch the athlete name from the API.
+
+Athlete_contract4.sol:
+Fourth deployment of an athlete smart contract. This one uses AthleteDetailsGUI.html, ClubDetailsGUI.html and MockContractGUI.html
+
 
 
