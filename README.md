@@ -50,7 +50,7 @@ Since this method proved ineffictive, it has only been set up to fetch the athle
 
 Athlete_contract4.sol:
 Fourth deployment of an athlete smart contract. This one uses AthleteDetailsGUI.html, ClubDetailsGUI.html and MockContract.html
-Those three .html files are GUI's that allow interaction with the smart contract once it's deployed. The first two are used to input athlete data and club data respectively, and the third is used to display all the recieved information
+Those three .html files are GUI's that allow interaction with the smart contract once it's deployed. The first two are used to input athlete data and club data respectively, and the third is used to display all the recieved information.
 In order for this to be successful, contract address and ABI need to be updated in all of the .html files.
 To copy the ABI across, go to the compile tab on Remix and click on ABI at the bottom
 
@@ -60,6 +60,13 @@ Then paste that into the corresponding functions on the .html files
 The contract address is found once you have deployed your contract, it can be copied from the deployed contract section in the deployed tab
 
 ![image](https://user-images.githubusercontent.com/31867189/129308259-6120696c-161a-4553-986d-1f74fe5c7395.png)
+
+Once these have been updated the GUI will be able to update and recieve info from the deployed smart contract.
+This version of the contract takes one athlete at a time and stores all their details as well as club details and the contract dates in seperate structs
+
+Athlete_contract5.sol:
+Fifth deployment of an athlete smart contract. The setup for this one is exactly the same as the previous one, using the GUI .html files.
+This version has an athlete database implemented. This means everytime the AthleteDetailsGUI.html gets a new submission the details are added to the Athlete database with an associated athlete number. When ClubDetailsGUI.html recieves a submission the Athlete term is updated. The term is also stored in a database and can be accessed with the associated athlete number.
 
 
 
