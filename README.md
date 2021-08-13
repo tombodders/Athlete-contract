@@ -10,6 +10,7 @@ Once compiled, you can deploy the contract from the deploy tab.
 ![image](https://user-images.githubusercontent.com/31867189/129259738-e151ad87-87e8-490f-b342-47501b01325e.png)
 
 On the deploy tag there is an environment selector, the options are:
+
 ![image](https://user-images.githubusercontent.com/31867189/129259806-974f7b56-3f03-408c-be15-ee5513bfe8ee.png)
 
 Javascript VM: Provides various accounts within remix that you can get test eth and test your contracts from. Not compatible with all functions.
