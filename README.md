@@ -2,14 +2,14 @@
 
 All .sol files can be deployed on remix.ethereum.org
 
-Copy the file of the contract you are trying to deploy into remix. Note the solidity version in the first line of code and match the solidity compiler. 
+Copy the file of the contract you are trying to deploy into remix. Note the solidity version in the first line of code and match the solidity compiler version. 
 
 ![image](https://user-images.githubusercontent.com/31867189/129259628-0208aa22-db93-49a3-b88f-57b27b63a668.png) ![image](https://user-images.githubusercontent.com/31867189/129259667-597fd8f3-1a23-45bd-8af5-24e4db2760e9.png)
 
 Once compiled, you can deploy the contract from the deploy tab.
 ![image](https://user-images.githubusercontent.com/31867189/129259738-e151ad87-87e8-490f-b342-47501b01325e.png)
 
-One the deploy tag you there is an environment selector, the options are:
+On the deploy tag there is an environment selector, the options are:
 ![image](https://user-images.githubusercontent.com/31867189/129259806-974f7b56-3f03-408c-be15-ee5513bfe8ee.png)
 
 Javascript VM: Provides various accounts within remix that you can get test eth and test your contracts from. Not compatible with all functions.
@@ -19,7 +19,7 @@ Injected Web3: Will connect to metamask if you have it installed in your browser
 ![image](https://user-images.githubusercontent.com/31867189/129261770-cebe9b4c-563e-4a91-834a-92e6b5426c20.png)
 
 Try this link to get testnet eth https://github.com/kovan-testnet/faucet
-You will then get a notifcation for a gas fee everytime you change something or deploy. This is method I would recommend
+You will then get a notification for a gas fee everytime you call a function or deploy a contract. This is method I would recommend
 
 Web3 Provider: Can identify a specific account that your gas fee will be taken from, this method is the hardest to set up
 
@@ -34,12 +34,12 @@ The function set goals is to determine a bonus payment if athlete in question re
 
 Athlete_contract2.sol:
 
-Second deployment of an athlete smart contract. This version gets all information input before the contract is deployed and uses the same set goals and get bonus function as the previous contract
+Second deployment of an athlete smart contract. This version gets all information input into structs before the contract is deployed and uses the same set goals and get bonus function as the previous contract. Structs simply put makes the data easier to view
 
 Athlete_contract3.sol:
 
-Third deployment of an athlete smart contract. This one uses a chainlink oracle to fetch data from a simulated API, the API simply has what would be the necessary athlete data. 
-Since this method requires a chainlink oracle, there is a fee associated with the oracle of 0.1 chainlink token. These can also be acquired on a testnet
+Third deployment of an athlete smart contract. This one uses a chainlink oracle to fetch data from a simulated API, the API has what would be the necessary athlete data. 
+Since this method requires a chainlink oracle, there is a fee associated with the oracle of 0.1 chainlink token per use. These can also be acquired on a testnet
 
 ![image](https://user-images.githubusercontent.com/31867189/129264432-95011017-5160-4bad-a48d-4556faec5a3e.png)
 
@@ -66,12 +66,13 @@ The contract address is found once you have deployed your contract, it can be co
 ![image](https://user-images.githubusercontent.com/31867189/129308259-6120696c-161a-4553-986d-1f74fe5c7395.png)
 
 Once these have been updated the GUI will be able to update and recieve info from the deployed smart contract.
-This version of the contract takes one athlete at a time and stores all their details as well as club details and the contract dates in seperate structs
+This version of the contract takes one athlete at a time and stores all their details as well as club details and the contract dates in seperate structs.
+If a new athlete is submitted the previous data will be lost.
 
 Athlete_contract5.sol:
 
 Fifth deployment of an athlete smart contract. The setup for this one is exactly the same as the previous one, using the GUI .html files.
-This version has an athlete database implemented. This means everytime the AthleteDetailsGUI.html gets a new submission the details are added to the Athlete database with an associated athlete number. When ClubDetailsGUI.html recieves a submission the Athlete term is updated. The term is also stored in a database and can be accessed with the associated athlete number.
+This version has an athlete database implemented. This means everytime the AthleteDetailsGUI.html gets a new submission the details are added to the Athlete database with an associated athlete number. When ClubDetailsGUI.html recieves a submission the Athlete term is updated. The term is also stored in a database and will be connected to an athlete through their athlete number.
 
 
 
