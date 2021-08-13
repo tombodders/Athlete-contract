@@ -47,7 +47,16 @@ Now that you have link token you can call the function requestAthleteData, this 
 Since this method proved ineffictive, it has only been set up to fetch the athlete name from the API.
 
 Athlete_contract4.sol:
-Fourth deployment of an athlete smart contract. This one uses AthleteDetailsGUI.html, ClubDetailsGUI.html and MockContractGUI.html
+Fourth deployment of an athlete smart contract. This one uses AthleteDetailsGUI.html, ClubDetailsGUI.html and MockContract.html
+Those three .html files are GUI's that allow interaction with the smart contract once it's deployed. The first two are used to input athlete data and club data respectively, and the third is used to display all the recieved information
+In order for this to be successful, contract address and ABI need to be updated in all of the .html files.
+To copy the ABI across, go to the compile tab on Remix and click on ABI at the bottom
+![image](https://user-images.githubusercontent.com/31867189/129308067-234487d8-f888-43fd-bf9f-4fd05ee1a5d1.png)
+
+Then paste that into the corresponding functions on the .html files
+The contract address is found once you have deployed your contract, it can be copied from the deployed contract section in the deployed tab
+![image](https://user-images.githubusercontent.com/31867189/129308259-6120696c-161a-4553-986d-1f74fe5c7395.png)
+
 
 
 
