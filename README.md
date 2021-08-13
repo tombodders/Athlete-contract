@@ -27,14 +27,17 @@ Once deployed, you can interact with your contract in the deployed contracts tab
 ![image](https://user-images.githubusercontent.com/31867189/129259491-24c6b8a3-a7af-4612-b056-dcaccff84608.png)
 
 Athlete_contract.sol:
+
 First deployment of an athlete smart contract. It has a function to add an athlete to a database, an associated athlete id can be used to walk through and see all entries in the database.
 There are also databases for club details, term start and term end.
 The function set goals is to determine a bonus payment if athlete in question reaches a certain clause, in this case it's every 10 goals.
 
 Athlete_contract2.sol:
+
 Second deployment of an athlete smart contract. This version gets all information input before the contract is deployed and uses the same set goals and get bonus function as the previous contract
 
 Athlete_contract3.sol:
+
 Third deployment of an athlete smart contract. This one uses a chainlink oracle to fetch data from a simulated API, the API simply has what would be the necessary athlete data. 
 Since this method requires a chainlink oracle, there is a fee associated with the oracle of 0.1 chainlink token. These can also be acquired on a testnet
 
@@ -49,6 +52,7 @@ Now that you have link token you can call the function requestAthleteData, this 
 Since this method proved ineffictive, it has only been set up to fetch the athlete name from the API.
 
 Athlete_contract4.sol:
+
 Fourth deployment of an athlete smart contract. This one uses AthleteDetailsGUI.html, ClubDetailsGUI.html and MockContract.html
 Those three .html files are GUI's that allow interaction with the smart contract once it's deployed. The first two are used to input athlete data and club data respectively, and the third is used to display all the recieved information.
 In order for this to be successful, contract address and ABI need to be updated in all of the .html files.
@@ -65,6 +69,7 @@ Once these have been updated the GUI will be able to update and recieve info fro
 This version of the contract takes one athlete at a time and stores all their details as well as club details and the contract dates in seperate structs
 
 Athlete_contract5.sol:
+
 Fifth deployment of an athlete smart contract. The setup for this one is exactly the same as the previous one, using the GUI .html files.
 This version has an athlete database implemented. This means everytime the AthleteDetailsGUI.html gets a new submission the details are added to the Athlete database with an associated athlete number. When ClubDetailsGUI.html recieves a submission the Athlete term is updated. The term is also stored in a database and can be accessed with the associated athlete number.
 
