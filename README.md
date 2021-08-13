@@ -41,6 +41,7 @@ Since this method requires a chainlink oracle, there is a fee associated with th
 
 Link to get Kovan testnet chainlink token https://kovan.chain.link/
 Once you have deployed the contract, copy the contract address and send .1 link token to it.
+
 ![image](https://user-images.githubusercontent.com/31867189/129300519-dc6c2e2f-45fa-4512-991f-a8028f503e18.png)
 
 Now that you have link token you can call the function requestAthleteData, this will call the oracle and consume the .1 chainlink token fee. 
