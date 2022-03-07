@@ -77,7 +77,7 @@ This version has an athlete database implemented. This means everytime the Athle
 
 
 
-Walkthrough of the final code design and potential UI interface can be found here: https://drive.google.com/drive/folders/1EYJHDT9Xz7O_iBE9KaJINcOwT_qV3GgX?usp=sharing
+Walkthrough of the final code design and potential UI for the athlete and club can be found here: https://drive.google.com/drive/folders/1EYJHDT9Xz7O_iBE9KaJINcOwT_qV3GgX?usp=sharing
 
 
 
